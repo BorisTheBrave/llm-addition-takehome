@@ -28,5 +28,10 @@ Step 1 is reading the paper and code...
 
 17:30 - scan of paper done, looking at code
 
-Uses nnsight. I may need an account to run this, iirc nnsight is often run remotely.
-Some datasets are precomputed, and not in the code - i may need to re-run.
+Uses nnsight. I may need an account to run this, iirc nnsight is often run remotely?
+Some datasets are precomputed, and not in the code - i may need to re-run or download.
+
+I've got the python env working and am downloading the (LARGE) datasets. Stopping for now while that downloads as I started late today.
+
+18:00
+
