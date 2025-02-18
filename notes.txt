@@ -1,0 +1,32 @@
+17:00 - initial notes
+
+I'm curious about Language Models Use Trigonometry to Do Addition. 
+
+I've got a few possible research ideas.
+
+A) I want to reprocue the result and test robustness,
+
+B) Does a similar result work for multiplication?
+
+I have some hypotheses for multiplication:
+ * A parallel set of circuits that work like addition, but encode/decode log(a)
+ * The same circuits are re-used, but with a log/exp step before after.
+ * log itself may be approximated by MLP, or by relying on position encoding of tokens
+ * Memorization or model is not really capable of multiplication.
+
+
+C) Another question is whether you can still get step-by-step arithmetic if you ablate the "innate" ability to sum things
+
+---
+
+Step 1 is reading the paper and code...
+..berifly reading https://openreview.net/pdf?id=S5wmbQc1We 
+..am realizing paper only works on single tokens, which simplifies things considerably
+..fitting the helix - don't fully understand, code will help
+..ah, the paper also wonders about multiplication
+..gemma-2-9b tokens digits separately - good model if you do want to investigate multi token streams
+
+17:30 - scan of paper done, looking at code
+
+Uses nnsight. I may need an account to run this, iirc nnsight is often run remotely.
+Some datasets are precomputed, and not in the code - i may need to re-run.
