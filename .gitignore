@@ -1,4 +1,5 @@
 .venv
+access.txt
 data
 data_addition
 data_multiplication

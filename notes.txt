@@ -34,4 +34,50 @@ Some datasets are precomputed, and not in the code - i may need to re-run or dow
 I've got the python env working and am downloading the (LARGE) datasets. Stopping for now while that downloads as I started late today.
 
 18:00
+---
+13:30
+decided not to run locally
+faffing with vast.ai instance and env
 
+14:10
+Got that going, now seeing if i can run the repo code.
+
+Notes on repo:
+hexix_fitting seems to be main fit. Other files do various forms of analysis. "ab_" == ablation?
+
+file_notes
+data_addtion/gen_math/data_addition_...	gen_math	Questions and expected answers
+data/helix_hss				run_hs		Gets hidden states of given token. Optionally sampled down to 500 elements (for perf?)
+
+
+Starting to get things running. Plotted correctness addition_correctness.png
+TODO: Maybe plot probability of correctness, rather than just binary?
+
+still reading code figuring out how bits of it work
+
+15:25
+I think I've got a minimal subset of the code and plotting working. And I've got a decent grasp on what it's doing. 
+It certainly seems to give v similar results to the original paper, so we can consider that weakly reconstructed. 
+They already ran for different models, so not much point experimenting in that direction. 
+I want to look at multiplication.
+
+
+My thinking is:
+1) Change gen_math to use multiplication answers
+2) Filter to just one token answers
+3) Check model accuracy
+4) similar changes for features for fitting
+5) re-run fits and investigate?
+
+15:39
+Plotted multiplication_correctness.png
+
+Gonna take a detour to plot correctness probability.
+Plotted multiplicaiton_correctness_prob.png, generallyshows reliability
+
+Am thinking: paper recovered linear component as 1st pca. Should we look for log component before bothering with helix? Simiarly, should do FFT before looking for helix. There's no longer a "natural choice of bases".
+Also thinking: 0 is a special case token as it doesn't have a log. Quite possibly there are separate circuits for it?
+
+Starting to write code to find log component. Going to call it here for now.
+
+16:30
