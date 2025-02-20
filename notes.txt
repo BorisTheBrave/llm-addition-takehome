@@ -99,3 +99,37 @@ PCA components 3+ look like they are periodic. But component 1 and 2 are suspici
 18:00 
 
 --- (elapsed: 5h)
+
+14:30
+
+Investigating weird principal componts.
+
+Paper explains this as a rgime change at 100 (due to digit change). Could be. Also could be PCA isn't able to see the feature properly as it is non linear.
+Some eviden for this is that PC1 and PC2 seem to "swap" at digit 100, which is strange. pc1_pc2_swap.png.
+Possibly PC1 encodes value of "leftmost 2 digits"?
+
+I experimented with fitting a few PCA components to a logarithm, and couldn't find a good fit. It never really dipped down for the low numbers. fit_failure.
+
+I expect I'm going to need to do as the paper does. Fit the full hidden state, then do an ablation study.
+
+Spent ~15 running PCA and fit code vs logs
+
+Fits still not great (judinging by MSE of log fit vs randomized version of the same, also by logdiff of activation patching
+
+Testing a later layer, as log may not appear straight away? Fit doesn't seem noticably better this way - rules out domain warping with a MLP / non-linearity
+
+Hmm, PCs do change. layer 3 and beyond includes a top component that only fires on 28, 80, 88? Cannot figure out why that's important. layer_3_components.png
+Potentially could study by inspecting training strings that start with those numbers? It's robust to maxa.
+I did feature steering, and found strength 35 was the highest i still got coherent sentences from. Nothing reliable, but it seemed to like punctuation, maths, law?
+(see 88 investigation.ipynb)
+
+
+Am considering doing FFT analysis looking for cos(log(a)) etc
+
+17:00
+
+--- (elapsed: 7.5h)
+
+
+
+
