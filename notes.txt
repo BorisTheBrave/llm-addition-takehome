@@ -130,6 +130,42 @@ Am considering doing FFT analysis looking for cos(log(a)) etc
 
 --- (elapsed: 7.5h)
 
+11:30
 
+look at fft analysis.
+Also negative - found no good fits.
+Inspected PCAs. Found some plausible ones
 
+aside: i checked that pythia model didn't have a similar weird component.
 
+13:00 break for lunch
+--- (elapsed: 9h) 
+
+13:45
+
+Checked whether the components themselves were good fits, adding somre more fitting code
+
+14:30
+Overlaying the best fit plots really sped up my investigation, as i could test a few different hypotheses.
+
+I found a component of [1,360] that plausible looks cos(log(a)). But it's only one, which suggests it's a red herring (they should be in pairs, for clock arithmatic). log_vs_linear_fit.png
+
+Then I filtered to [1, 99] like the paper, and looked at those. nothing for cos(log(a)).
+! Then I returned to the log component, and realized that as as Principal components would suck out anything linear, the fits need to be vs (ax + b log(x)). Then I found an *excellent* fit for PC3, which seems pretty solid. log_linear_true_99_fit.png
+
+Ok, so working theory is that there is no clock arithmetic for log(a). Quite possibly it's not needed when the range of numbers that gives a single token output is so much smaller?
+
+Next I would like to validate the linear component. Going to review the existing paper/code for suggestions on how to do that.
+
+Yes, using the fitting code actually shows logpoly_1 has a better mse than poly_1.
+I want to fit poly+logpoly, like I did before...
+
+15:46
+
+11 hours in, i'm considering wrapping this up. I've run the intervention code, and it shows that PCA outperforms x+log(x), which is embarrsing as it has twice the parameters to tune!
+
+My tentative conclusion is that the addition spiral is being re-used somehow. log_patching.png
+
+15:55
+
+--- (elapsed: 11h 10m)
